@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf8"/>
+<style>
+h1 {
+  position: absolute;
+}
+
+img {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+
+</style>
+  </head>
+  <body>
+        <img src="http://joinourspace.nl/school/start.png"></img>
+        <h1></h1>
+        <script>
+
+          let groupId
+          let lastSrc
+
+          async function getData() {
+            const res = await fetch(groupId != undefined ? 
+              `/instruct?groupId=${groupId}` :
+              '/instruct')
+            const obj = await res.json()
+            groupId = obj.groupId
+            if(obj.img != lastSrc) {
+              lastSrc = obj.img
+              document.querySelector('img').src = obj.img
+            }
+            document.querySelector('h1').innerHTML = obj.txt
+          }
+
+          window.addEventListener('DOMContentLoaded', e => {
+            setInterval(getData, 250)
+          });
+
+
+        </script>
+  </body>
+</html>
+
