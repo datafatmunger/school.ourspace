@@ -33,7 +33,17 @@ app.get('/instruct', (req, res) => {
     if(!obj && t < time) obj = s
   })
 
-  if(!obj) obj = scripts[groupId][scripts[groupId].length - 1]
+  let totalTime = scripts[groupId].reduce((t, o) => {
+    return t + o.time
+  }, 0)
+  console.log(`Script total time: ${totalTime}`)
+
+  if(t > totalTime) {
+    console.log('Loop reset...')
+    stop()
+  } else if(!obj) {
+    obj = scripts[groupId][scripts[groupId].length - 1]
+  }
 
   res.send(JSON.stringify({ ...obj, groupId }))
 

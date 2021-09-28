@@ -2,12 +2,26 @@
 <html>
   <head>
     <meta charset="utf8">
+<style>
+
+body {
+  background: blue;
+}
+
+div {
+  text-align: center;
+}
+
+.start:hover, .stop:hover {
+  cursor: pointer;
+}
+
+</style>
   </head>
   <body>
-        <h1>Press here to start Ourspace</h1>
-        <button class="start">Start</button>
-        <button class="stop">Stop</button>
-        <h2></h2>
+        <div><img src="start_button-01.png" class="start"/></div>
+        <div><img src="welkom_text.png"/></div>
+        <div><img src="stop_button-01.png" class="stop"/></div>
         <script>
           const audio = new Audio('http://joinourspace.nl/school/Ourspace.mp3')
 
