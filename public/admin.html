@@ -28,7 +28,7 @@ div {
           async function start() {
             const res = await fetch('/start')
             const txt = await res.text()
-            document.querySelector('h2').innerHTML = txt
+            //document.querySelector('h2').innerHTML = txt
 
             audio.play()
           }
@@ -36,7 +36,7 @@ div {
           async function stop() {
             const res = await fetch('/stop')
             const txt = await res.text()
-            document.querySelector('h2').innerHTML = txt
+            //document.querySelector('h2').innerHTML = txt
 
             audio.pause()
             audio.currentTime = 0
