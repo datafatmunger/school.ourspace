@@ -23,6 +23,17 @@ img {
           let groupId
           let lastSrc
 
+          function rmImg() {
+            const img = document.querySelector('img')
+            document.querySelector('body').removeChild(img)
+          }
+
+          function addImg(src) {
+            const img = document.createElement('img')
+            img.src = src
+            document.querySelector('body').appendChild(img)
+          }
+
           async function getData() {
             const res = await fetch(groupId != undefined ? 
               `/instruct?groupId=${groupId}` :
@@ -31,7 +42,9 @@ img {
             groupId = obj.groupId
             if(obj.img != lastSrc) {
               lastSrc = obj.img
-              document.querySelector('img').src = obj.img
+              //document.querySelector('img').src = obj.img
+              rmImg()
+              addImg(obj.img)
             }
             document.querySelector('h1').innerHTML = obj.txt
           }

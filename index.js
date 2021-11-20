@@ -18,7 +18,7 @@ app.use(bodyParser.json({ limit: '50mb' }))
 app.get('/instruct', (req, res) => {
   let groupId = req.query.groupId
 
-  console.log(`Request for group ${groupId}`)
+  //console.log(`Request for group ${groupId}`)
 
   if(!groupId) {
     ++partCount
@@ -36,10 +36,10 @@ app.get('/instruct', (req, res) => {
   let totalTime = scripts[groupId].reduce((t, o) => {
     return t + o.time
   }, 0)
-  console.log(`Script total time: ${totalTime}`)
+  //console.log(`Script total time: ${totalTime}`)
 
   if(t > totalTime) {
-    console.log('Loop reset...')
+    //console.log('Loop reset...')
     stop()
   } else if(!obj) {
     obj = scripts[groupId][scripts[groupId].length - 1]
@@ -59,7 +59,7 @@ function stop() {
 function start() {
   interval = setInterval(() => {
     t += 1
-    console.log(`time: ${t}`)
+    //console.log(`time: ${t}`)
   }, 1000)
 }
 
